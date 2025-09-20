@@ -111,10 +111,19 @@ a = float(input("Side a: "))
 b = float(input("Side b: "))
 c = float(input("Side c: "))
 
-lhs = (a**2) + (b**2)
-rhs = c**2
+rightAngled = False
 
-if abs(lhs - rhs) < 0.000001:
+if a >= b and a >= c:
+    if abs((b**2 + c**2) - a**2) < 0.000001:
+        rightAngled = True
+elif b >= a and b >= c:
+    if abs((a**2 + c**2) - b**2) < 0.000001:
+        rightAngled = True
+else:
+    if abs((a**2 + b**2) - c**2) < 0.000001:
+        rightAngled = True
+
+if rightAngled:
     print("Triangle is right angled")
 else:
     print("Triangle is not right angled")
